@@ -1,0 +1,8 @@
+{
+  "name": "Copy of Bookly - Multi-tenant Appointment Scheduler",
+  "description": "A high-end multi-tenant platform for small businesses to manage employees, schedules, and for clients to book appointments effortlessly.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
