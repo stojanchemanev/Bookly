@@ -1,11 +1,10 @@
 
 import React from 'react';
-// Fixed: Changed import source from 'react-router-dom' to 'react-router' to resolve missing member error.
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Calendar, LogOut } from 'lucide-react';
-import { useAuth } from './AuthContext';
-import { UserRole } from './types';
-import { NotificationBell } from './NotificationBell';
+import { useAuth } from './AuthContext.tsx';
+import { UserRole } from './types.ts';
+import { NotificationBell } from './NotificationBell.tsx';
 
 export const Navbar = () => {
   const { user, logout } = useAuth();

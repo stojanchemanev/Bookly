@@ -2,9 +2,9 @@
 import React, { useState, useRef } from 'react';
 import { format } from 'date-fns';
 import { Camera, Upload, CheckCircle } from 'lucide-react';
-import { Card, Button } from './UIComponents';
-import { NotificationBell } from './NotificationBell';
-import { MOCK_BUSINESSES } from './constants';
+import { Card, Button } from './UIComponents.tsx';
+import { NotificationBell } from './NotificationBell.tsx';
+import { MOCK_BUSINESSES } from './constants.tsx';
 
 const CalendarView: React.FC = () => {
   const hours = Array.from({ length: 13 }, (_, i) => i + 8);
@@ -47,7 +47,6 @@ const BusinessSettings: React.FC = () => {
     <Card className="p-8">
       <h3 className="text-2xl font-black mb-8">Business Profile</h3>
       <div className="space-y-8">
-        {/* Logo Upload Section */}
         <div>
           <label className="block text-sm font-bold text-gray-700 mb-4 uppercase tracking-wider">Business Logo</label>
           <div className="flex items-center gap-8">

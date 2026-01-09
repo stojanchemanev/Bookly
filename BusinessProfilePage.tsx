@@ -1,14 +1,13 @@
 
 import React, { useState, useMemo } from 'react';
-// Fixed: Changed import source from 'react-router-dom' to 'react-router' to resolve missing member error.
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { Star, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { format, addHours, isSameDay, addDays } from 'date-fns';
-import { Navbar } from './Navbar';
-import { MOCK_BUSINESSES, MOCK_EMPLOYEES } from './constants';
-import { useNotifications } from './NotificationContext';
-import { Card, Button } from './UIComponents';
-import { Employee, TimeSlot } from './types';
+import { Navbar } from './Navbar.tsx';
+import { MOCK_BUSINESSES, MOCK_EMPLOYEES } from './constants.tsx';
+import { useNotifications } from './NotificationContext.tsx';
+import { Card, Button } from './UIComponents.tsx';
+import { Employee, TimeSlot } from './types.ts';
 
 export const BusinessProfilePage = () => {
   const { id } = useParams();

@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Sparkles, Loader2 } from 'lucide-react';
 import { GoogleGenAI, Type } from "@google/genai";
-import { Button } from './UIComponents';
-import { MOCK_BUSINESSES } from './constants';
+import { Button } from './UIComponents.tsx';
+import { MOCK_BUSINESSES } from './constants.tsx';
 
 export const AISearchAssistant: React.FC<{ onResult: (matchedIds: string[] | null) => void }> = ({ onResult }) => {
   const [query, setQuery] = useState('');
@@ -17,7 +17,10 @@ export const AISearchAssistant: React.FC<{ onResult: (matchedIds: string[] | nul
     setIsThinking(true);
     setError(null);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      // Use the injected API key
+      const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
+      const ai = new GoogleGenAI({ apiKey: apiKey as string });
+      
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: `I have the following businesses: ${JSON.stringify(MOCK_BUSINESSES.map(b => ({ id: b.id, name: b.name, cat: b.category, desc: b.description })))}. 

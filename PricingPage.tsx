@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Check } from 'lucide-react';
-import { Navbar } from './Navbar';
-import { Card, Button } from './UIComponents';
+import { Navbar } from './Navbar.tsx';
+import { Card, Button } from './UIComponents.tsx';
 
 export const PricingPage = () => {
   const plans = [

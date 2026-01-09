@@ -1,11 +1,10 @@
 
 import React, { useState } from 'react';
-// Fixed: Changed import source from 'react-router-dom' to 'react-router' to resolve missing member errors.
-import { useNavigate, Link } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import { User as UserIcon, Briefcase, CheckCircle } from 'lucide-react';
-import { useAuth } from './AuthContext';
-import { UserRole } from './types';
-import { Card, Button } from './UIComponents';
+import { useAuth } from './AuthContext.tsx';
+import { UserRole } from './types.ts';
+import { Card, Button } from './UIComponents.tsx';
 
 export const RegisterPage = () => {
   const navigate = useNavigate();

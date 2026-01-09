@@ -1,12 +1,11 @@
 
 import React, { useState } from 'react';
-// Fixed: Changed import source from 'react-router-dom' to 'react-router' to resolve missing member error.
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Search, Star, MapPin } from 'lucide-react';
-import { Navbar } from './Navbar';
-import { AISearchAssistant } from './AISearchAssistant';
-import { MOCK_BUSINESSES, CATEGORIES } from './constants';
-import { Card, Button } from './UIComponents';
+import { Navbar } from './Navbar.tsx';
+import { AISearchAssistant } from './AISearchAssistant.tsx';
+import { MOCK_BUSINESSES, CATEGORIES } from './constants.tsx';
+import { Card, Button } from './UIComponents.tsx';
 
 export const BrowsePage = () => {
   const [activeCategory, setActiveCategory] = useState('All');

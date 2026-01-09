@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import { format, addDays } from 'date-fns';
-import { Navbar } from './Navbar';
-import { Card } from './UIComponents';
+import { Navbar } from './Navbar.tsx';
+import { Card } from './UIComponents.tsx';
 
 export const ClientAppointmentsPage = () => {
   const [activeTab, setActiveTab] = useState<'upcoming' | 'past' | 'cancelled'>('upcoming');

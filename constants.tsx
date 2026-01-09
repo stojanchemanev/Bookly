@@ -1,5 +1,5 @@
 
-import { Business, Employee, User, UserRole } from './types';
+import { Business, Employee, User, UserRole } from './types.ts';
 
 export const MOCK_BUSINESSES: Business[] = [
   {

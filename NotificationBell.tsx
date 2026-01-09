@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Bell } from 'lucide-react';
 import { format } from 'date-fns';
-import { useNotifications } from './NotificationContext';
+import { useNotifications } from './NotificationContext.tsx';
 
 export const NotificationBell = () => {
   const { unreadCount, notifications, markAsRead } = useNotifications();

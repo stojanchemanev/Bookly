@@ -1,9 +1,8 @@
 
 import React from 'react';
-// Fixed: Changed import source from 'react-router-dom' to 'react-router' to resolve missing member error.
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Users, Settings, Clock } from 'lucide-react';
-import { Navbar } from './Navbar';
+import { Navbar } from './Navbar.tsx';
 
 export const LandingPage = () => (
   <div className="min-h-screen">

@@ -1,20 +1,19 @@
 
 import React from 'react';
-// Fixed: Changed import source from 'react-router-dom' to 'react-router' as core routing members are available there in this environment.
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router';
-import { AuthProvider, useAuth } from './AuthContext';
-import { NotificationProvider } from './NotificationContext';
-import { UserRole } from './types';
+import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AuthProvider, useAuth } from './AuthContext.tsx';
+import { NotificationProvider } from './NotificationContext.tsx';
+import { UserRole } from './types.ts';
 
 // Page Imports
-import { LandingPage } from './LandingPage';
-import { BrowsePage } from './BrowsePage';
-import { PricingPage } from './PricingPage';
-import { LoginPage } from './LoginPage';
-import { RegisterPage } from './RegisterPage';
-import { BusinessProfilePage } from './BusinessProfilePage';
-import { BusinessDashboard } from './BusinessDashboard';
-import { ClientAppointmentsPage } from './ClientAppointmentsPage';
+import { LandingPage } from './LandingPage.tsx';
+import { BrowsePage } from './BrowsePage.tsx';
+import { PricingPage } from './PricingPage.tsx';
+import { LoginPage } from './LoginPage.tsx';
+import { RegisterPage } from './RegisterPage.tsx';
+import { BusinessProfilePage } from './BusinessProfilePage.tsx';
+import { BusinessDashboard } from './BusinessDashboard.tsx';
+import { ClientAppointmentsPage } from './ClientAppointmentsPage.tsx';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode; role?: UserRole }> = ({ children, role }) => {
   const { user, loading } = useAuth();
