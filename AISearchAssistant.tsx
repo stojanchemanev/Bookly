@@ -17,9 +17,9 @@ export const AISearchAssistant: React.FC<{ onResult: (matchedIds: string[] | nul
     setIsThinking(true);
     setError(null);
     try {
-      // Use the injected API key
-      const apiKey = typeof process !== 'undefined' ? process.env.API_KEY : '';
-      const ai = new GoogleGenAI({ apiKey: apiKey as string });
+      // Create a new GoogleGenAI instance right before making an API call.
+      // Always use process.env.API_KEY directly from the environment.
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
@@ -35,32 +35,34 @@ export const AISearchAssistant: React.FC<{ onResult: (matchedIds: string[] | nul
         }
       });
 
-      const matchedIds = JSON.parse(response.text || '[]');
+      // Directly access the .text property (not a method).
+      const textOutput = response.text || '[]';
+      const matchedIds = JSON.parse(textOutput.trim());
       onResult(matchedIds);
     } catch (err) {
       console.error('AI Search Error:', err);
-      setError('AI search is currently unavailable.');
+      setError('Assistant unavailable. Try again in a moment.');
     } finally {
       setIsThinking(false);
     }
   };
 
   return (
-    <div className="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 mb-8">
+    <div className="bg-white border border-red-100 rounded-2xl p-6 mb-8 shadow-sm ring-4 ring-red-50/50">
       <div className="flex items-center gap-2 mb-4">
-        <Sparkles className="w-5 h-5 text-indigo-600 animate-pulse" />
-        <h3 className="font-bold text-indigo-900">AI Personal Assistant</h3>
+        <Sparkles className="w-5 h-5 text-red-600" />
+        <h3 className="font-bold text-gray-900">Search with AI Assistant</h3>
       </div>
       <form onSubmit={handleAISearch} className="flex gap-2">
         <input 
           type="text" 
-          placeholder="e.g., 'Looking for a relaxing facial and maybe a hair touch up today'"
-          className="flex-1 px-4 py-3 rounded-xl border border-indigo-200 focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-medium"
+          placeholder="e.g., 'I need a haircut this afternoon in NYC'"
+          className="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-red-500 outline-none text-sm font-medium transition-all"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <Button disabled={isThinking} type="submit" className="shrink-0 bg-indigo-600 text-white px-6">
-          {isThinking ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search with AI'}
+        <Button disabled={isThinking} type="submit" className="shrink-0 bg-red-600 hover:bg-red-700 text-white px-6 font-bold rounded-xl shadow-md shadow-red-100">
+          {isThinking ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Search'}
         </Button>
       </form>
       {error && <p className="text-xs text-red-500 mt-2 font-medium">{error}</p>}

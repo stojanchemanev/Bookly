@@ -3,6 +3,7 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './AuthContext.tsx';
 import { NotificationProvider } from './NotificationContext.tsx';
+import { BookingProvider } from './BookingContext.tsx';
 import { UserRole } from './types.ts';
 
 // Page Imports
@@ -36,35 +37,37 @@ export default function App() {
   return (
     <AuthProvider>
       <NotificationProvider>
-        <Router>
-          <div className="min-h-screen">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/browse" element={<BrowsePage />} />
-              <Route path="/pricing" element={<PricingPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/business/:id" element={<BusinessProfilePage />} />
-              <Route 
-                path="/dashboard" 
-                element={
-                  <ProtectedRoute role={UserRole.BUSINESS}>
-                    <BusinessDashboard />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/my-appointments" 
-                element={
-                  <ProtectedRoute role={UserRole.CLIENT}>
-                    <ClientAppointmentsPage />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route path="*" element={<LandingPage />} />
-            </Routes>
-          </div>
-        </Router>
+        <BookingProvider>
+          <Router>
+            <div className="min-h-screen">
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/browse" element={<BrowsePage />} />
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/business/:id" element={<BusinessProfilePage />} />
+                <Route 
+                  path="/dashboard" 
+                  element={
+                    <ProtectedRoute role={UserRole.BUSINESS}>
+                      <BusinessDashboard />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/my-appointments" 
+                  element={
+                    <ProtectedRoute role={UserRole.CLIENT}>
+                      <ClientAppointmentsPage />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route path="*" element={<LandingPage />} />
+              </Routes>
+            </div>
+          </Router>
+        </BookingProvider>
       </NotificationProvider>
     </AuthProvider>
   );

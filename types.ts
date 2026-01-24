@@ -32,6 +32,15 @@ export interface Employee {
   avatar: string;
 }
 
+export interface Service {
+  id: string;
+  businessId: string;
+  name: string;
+  duration: number; // in minutes
+  price: string;
+  description?: string;
+}
+
 export interface TimeSlot {
   id: string;
   employeeId: string;
@@ -46,8 +55,15 @@ export interface Appointment {
   id: string;
   slotId: string;
   clientId: string;
+  clientName: string;
   businessId: string;
+  businessName: string;
   employeeId: string;
+  employeeName: string;
+  serviceName: string;
+  startTime: string;
+  duration: number;
+  price: string;
   status: 'PENDING' | 'CONFIRMED' | 'CANCELLED';
   createdAt: string;
 }

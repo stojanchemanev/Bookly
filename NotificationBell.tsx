@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Bell } from 'lucide-react';
 import { format } from 'date-fns';
@@ -12,11 +11,11 @@ export const NotificationBell = () => {
     <div className="relative">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-colors relative"
+        className="p-2 text-gray-500 hover:bg-red-50 hover:text-red-600 rounded-full transition-colors relative"
       >
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-600 rounded-full border-2 border-white"></span>
         )}
       </button>
 
@@ -26,7 +25,7 @@ export const NotificationBell = () => {
           <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 z-[70] overflow-hidden animate-in fade-in slide-in-from-top-2">
             <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
               <h3 className="font-bold text-gray-900">Notifications</h3>
-              <span className="text-[10px] font-black uppercase text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">{unreadCount} New</span>
+              <span className="text-[10px] font-black uppercase text-red-600 bg-red-50 px-2 py-0.5 rounded-full">{unreadCount} New</span>
             </div>
             <div className="max-h-96 overflow-y-auto">
               {notifications.length === 0 ? (
@@ -36,10 +35,10 @@ export const NotificationBell = () => {
                   <button 
                     key={notif.id}
                     onClick={() => { markAsRead(notif.id); setIsOpen(false); }}
-                    className={`w-full text-left p-4 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notif.read ? 'bg-indigo-50/30' : ''}`}
+                    className={`w-full text-left p-4 border-b border-gray-50 hover:bg-red-50/20 transition-colors ${!notif.read ? 'bg-red-50/30' : ''}`}
                   >
                     <div className="flex gap-3">
-                      <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${!notif.read ? 'bg-indigo-600' : 'bg-transparent'}`}></div>
+                      <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${!notif.read ? 'bg-red-600' : 'bg-transparent'}`}></div>
                       <div>
                         <p className={`text-sm ${!notif.read ? 'font-bold text-gray-900' : 'text-gray-600'}`}>{notif.title}</p>
                         <p className="text-xs text-gray-500 mt-1 line-clamp-2">{notif.message}</p>

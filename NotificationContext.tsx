@@ -24,7 +24,7 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
   const [notifications, setNotifications] = useState<Notification[]>([
     {
       id: '1',
-      title: 'Welcome to Bookly',
+      title: 'Welcome to Meetbe',
       message: 'Start by configuring your business profile in settings.',
       time: new Date().toISOString(),
       read: false,

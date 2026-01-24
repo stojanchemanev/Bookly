@@ -1,5 +1,5 @@
 
-import { Business, Employee, User, UserRole } from './types.ts';
+import { Business, Employee, Service, User, UserRole } from './types.ts';
 
 export const MOCK_BUSINESSES: Business[] = [
   {
@@ -39,6 +39,21 @@ export const MOCK_EMPLOYEES: Employee[] = [
   { id: 'e2', businessId: 'b1', name: 'Sarah Miller', role: 'Stylist', avatar: 'https://i.pravatar.cc/150?u=e2' },
   { id: 'e3', businessId: 'b2', name: 'Elena Rodriguez', role: 'Esthetician', avatar: 'https://i.pravatar.cc/150?u=e3' },
   { id: 'e4', businessId: 'b3', name: 'Marcus Kane', role: 'Head Coach', avatar: 'https://i.pravatar.cc/150?u=e4' }
+];
+
+export const MOCK_SERVICES: Service[] = [
+  // Barber Services
+  { id: 's1', businessId: 'b1', name: 'Classic Haircut', duration: 45, price: '$45', description: 'Consultation, cut, and style.' },
+  { id: 's2', businessId: 'b1', name: 'Hot Towel Shave', duration: 30, price: '$35', description: 'Traditional straight razor shave.' },
+  { id: 's3', businessId: 'b1', name: 'Beard Trim', duration: 20, price: '$25', description: 'Shape and trim your beard.' },
+  
+  // Spa Services
+  { id: 's4', businessId: 'b2', name: 'Deep Tissue Massage', duration: 60, price: '$120', description: 'Intensive therapy for muscle tension.' },
+  { id: 's5', businessId: 'b2', name: 'Hydrating Facial', duration: 50, price: '$95', description: 'Restore moisture and glow.' },
+  
+  // Fitness Services
+  { id: 's6', businessId: 'b3', name: 'Personal Training', duration: 60, price: '$80', description: '1-on-1 coaching session.' },
+  { id: 's7', businessId: 'b3', name: 'Consultation', duration: 30, price: 'Free', description: 'Fitness assessment and goal setting.' }
 ];
 
 export const CATEGORIES = ['All', 'Barber', 'Spa & Wellness', 'Fitness', 'Medical', 'Beauty'];

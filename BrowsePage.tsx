@@ -22,16 +22,16 @@ export const BrowsePage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gray-50/50 pb-20">
       <Navbar />
-      <div className="bg-white border-b shadow-sm">
+      <div className="bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="relative max-w-2xl">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input 
               type="text" 
               placeholder="Search services, shops, or locations..." 
-              className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-lg focus:ring-2 focus:ring-indigo-500 transition-all outline-none"
+              className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-md focus:ring-2 focus:ring-red-500 transition-all outline-none"
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -48,10 +48,10 @@ export const BrowsePage = () => {
                 setActiveCategory(cat);
                 setAiMatchedIds(null);
               }}
-              className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
+              className={`px-5 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all ${
                 activeCategory === cat 
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' 
-                  : 'bg-white text-gray-500 border hover:bg-gray-50'
+                  ? 'bg-red-600 text-white shadow-md shadow-red-100' 
+                  : 'bg-white text-gray-500 border border-gray-100 hover:bg-gray-50'
               }`}
             >
               {cat}
@@ -64,12 +64,12 @@ export const BrowsePage = () => {
         <AISearchAssistant onResult={setAiMatchedIds} />
 
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold">
-            {aiMatchedIds ? 'AI Recommended Results' : 'Explore Services'}
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight">
+            {aiMatchedIds ? 'AI Recommendations' : 'Explore Services'}
           </h2>
           {aiMatchedIds && (
-            <Button variant="ghost" onClick={() => setAiMatchedIds(null)} className="text-indigo-600 font-bold">
-              Show All Again
+            <Button variant="ghost" onClick={() => setAiMatchedIds(null)} className="text-red-600 font-bold">
+              Show All
             </Button>
           )}
         </div>
@@ -78,24 +78,26 @@ export const BrowsePage = () => {
           {filtered.length === 0 ? (
             <div className="col-span-full py-20 text-center">
                <p className="text-gray-400 font-bold text-lg italic">No results found matching your criteria.</p>
-               <Button variant="outline" className="mt-4" onClick={() => { setSearch(''); setActiveCategory('All'); setAiMatchedIds(null); }}>Clear Filters</Button>
+               <Button variant="outline" className="mt-4 mx-auto" onClick={() => { setSearch(''); setActiveCategory('All'); setAiMatchedIds(null); }}>Clear Filters</Button>
             </div>
           ) : (
             filtered.map(business => (
               <Link to={`/business/${business.id}`} key={business.id} className="group">
-                <Card className="hover:ring-2 hover:ring-indigo-500 transition-all border-none shadow-md hover:shadow-xl">
-                  <img src={business.logo} alt={business.name} className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Card className="hover:ring-2 hover:ring-red-500 transition-all border-none shadow-sm hover:shadow-xl">
+                  <div className="relative overflow-hidden aspect-video">
+                    <img src={business.logo} alt={business.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-3">
-                      <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2 py-1 rounded">{business.category}</span>
+                      <span className="text-[10px] font-bold text-red-600 uppercase tracking-widest bg-red-50 px-2 py-1 rounded-md">{business.category}</span>
                       <div className="flex items-center gap-1 text-sm font-bold text-amber-500">
                         <Star className="w-4 h-4 fill-current" />
                         {business.rating}
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-indigo-600 transition-colors">{business.name}</h3>
-                    <div className="flex items-center gap-1 text-sm text-gray-500 mb-4">
-                      <MapPin className="w-4 h-4" />
+                    <h3 className="text-lg font-bold mb-1 group-hover:text-red-600 transition-colors text-gray-900">{business.name}</h3>
+                    <div className="flex items-center gap-1 text-xs text-gray-500 mb-4">
+                      <MapPin className="w-3.5 h-3.5" />
                       {business.address}
                     </div>
                     <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{business.description}</p>

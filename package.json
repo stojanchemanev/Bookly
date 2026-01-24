@@ -1,5 +1,5 @@
 {
-  "name": "copy-of-bookly---multi-tenant-appointment-scheduler",
+  "name": "meetbe---multi-tenant-appointment-scheduler",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,13 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lucide-react": "^0.562.0",
-    "react-dom": "^19.2.3",
-    "react": "^19.2.3",
-    "react-router-dom": "^7.12.0",
-    "date-fns": "^4.1.0",
-    "@google/genai": "^1.35.0",
-    "react-router": "^7.12.0"
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-router-dom": "7.2.0",
+    "lucide-react": "0.475.0",
+    "date-fns": "4.1.0",
+    "@google/genai": "1.35.0",
+    "qrcode.react": "4.1.0",
+    "react-to-print": "3.0.2",
+    "react-barcode": "1.5.3"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
